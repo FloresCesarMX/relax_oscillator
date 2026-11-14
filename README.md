@@ -31,7 +31,6 @@ Relaxation oscillators are useful in systems that need a periodic timing signal.
 | Target flow | Tiny Tapeout analog/custom flow |
 | Institution | Universidad Autónoma de Baja California (UABC) |
 | Process / PDK | Defined by the selected Tiny Tapeout shuttle |
-| Experimental measurement status | Not measured yet |
 
 ## Design Concept
 
