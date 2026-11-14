@@ -32,8 +32,7 @@ Reference: Orazio Aiello, “On Standard Cell-Based Design for Dynamic Voltage C
 | Timing element | External capacitor |
 | Target flow | Tiny Tapeout analog/custom flow |
 | Institution | Universidad Autónoma de Baja California (UABC) |
-| Process / PDK | [Confirm from the project configuration] |
-| |
+| Process / PDK | [SKY130] |
 
 ## Design Concept
 
