@@ -106,3 +106,5 @@ This project was developed at the Universidad Autónoma de Baja California (UABC
 ## Reference
 
 Aiello, O. “On Standard Cell-Based Design for Dynamic Voltage Comparators and Relaxation Oscillators.” *Chips* 4, no. 3 (2025): 31. [https://doi.org/10.3390/chips4030031](https://doi.org/10.3390/chips4030031).
+
+<img width="1342" height="596" alt="image" src="https://github.com/user-attachments/assets/95688a29-96b0-47f9-b59b-195226c7c138" />
