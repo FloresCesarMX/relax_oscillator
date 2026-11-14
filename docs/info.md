@@ -2,27 +2,32 @@
 
 ## How it works
 
-This project implements a standard-cell relaxation oscillator based on the circuit described by Aiello. External timing capacitance connected to the `C1` and `C2` nodes affects the charging and discharging time, and therefore the oscillation frequency. The design does not require an external clock (`clock_hz: 0`).
+This project implements a standard-cell relaxation oscillator based on the circuit described by Aiello. The oscillator and its timing elements are integrated on-chip, so no external timing capacitor or clock is required.
 
-`ENABLE1` and `ENABLE2` control the oscillator. Its digital outputs are `Q` and `Qn`. Analog pins `C1` and `C2` expose the timing nodes. Connect the external capacitor or capacitors as shown in the Xschem schematic.
+`ENABLE1` and `ENABLE2` are control inputs. The digital outputs are `Q` and `Qn`. Analog pins `C1` and `C2` expose internal nodes for observation.
 
 ## How to test
 
-### Required equipment
+Power the chip and use an oscilloscope to measure its outputs. No external timing components or clock are required.
 
-- A compatible Tiny Tapeout test board for the project's 1x2 analog tile.
-- The external timing capacitor or capacitors, connected as shown in the Xschem schematic.
-- An oscilloscope and suitable probes for observing the digital outputs and analog timing nodes.
+Analog measurements at `C1` and `C2` may be affected by the Tiny Tapeout analog multiplexer and pad parasitics, which can reduce or distort the observed amplitude. Use the digital outputs as the primary signals for measuring the oscillation period.
+
+### Required equipment
+- An oscilloscope and suitable probes.
 
 ### Test procedure
 
-1. Insert the chip into a compatible Tiny Tapeout test board and use the board's specified supply configuration. The project has `uses_3v3: false` and does not require an external clock.
-2. Connect the timing capacitor or capacitors to `C1` and `C2` as shown in the Xschem schematic. These nodes are available at analog pins `UA[0]` and `UA[1]`.
-3. Set `ENABLE1` (`UI[0]`) and `ENABLE2` (`UI[1]`) to the active logic levels specified by the schematic.
-4. Use the oscilloscope to observe `Q` (`UO[0]`) and `Qn` (`UO[1]`). If the test setup permits, also observe `C1` and `C2` at the analog pins.
-5. Record the supply configuration, capacitor connection, enable states, output frequency, output amplitude, and measurement setup. Save an oscilloscope capture as experimental evidence.
+1. Power the chip using the board's specified supply configuration. The project has `uses_3v3: false` and requires no external clock.
+2. Set `ENABLE1` (`UI[0]`) and `ENABLE2` (`UI[1]`) to the active logic levels defined in the Xschem schematic, using the board's input controls if needed.
+3. Measure the digital outputs `Q` (`UO[0]`) and `Qn` (`UO[1]`) with the oscilloscope.
+4. Optionally observe internal analog nodes `C1` (`UA[0]`) and `C2` (`UA[1]`). Their measured waveforms may be affected by the analog multiplexer and pad parasitics.
+5. Measure the output period and calculate the frequency as `f = 1/T`.
+6. Record the supply configuration, enable states, measured period or frequency, output amplitude, and measurement setup. Save an oscilloscope capture as evidence.
 
-Use the project pin configuration in `info.yaml` together with the Xschem schematic when preparing the board connections.
+## External hardware
+
+No external timing components are required.
+
 
 ## Pin map
 
@@ -35,8 +40,3 @@ Use the project pin configuration in `info.yaml` together with the Xschem schema
 | `UA[0]` | `C1` | Analog timing-capacitor node 1. |
 | `UA[1]` | `C2` | Analog timing-capacitor node 2. |
 
-## External hardware
-
-- Tiny Tapeout test board compatible with this shuttle.
-- External timing capacitor or capacitors connected as shown in the Xschem schematic.
-- Oscilloscope and suitable probes.
